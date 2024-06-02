@@ -19,7 +19,7 @@ Here is an example (where repetitions is R = 4):
 
 
 
-	The Tanner Graph is generated with a process similar to depth-first tree construction, however since cycles will inevitably happen, will route back to the earliest used nodes as an attempt to maximize cycle lengths. More about the exact algorithm can be found in the paper mentioned in the introduction, which is the base for all the work done here.
+The Tanner Graph is generated with a process similar to depth-first tree construction, however since cycles will inevitably happen, will route back to the earliest used nodes as an attempt to maximize cycle lengths. More about the exact algorithm can be found in the paper mentioned in the introduction, which is the base for all the work done here.
 
 Belief propagation and message passing rely on local computations. Each variable node will send its value to the connected check node. The check node will then perform a local computation and send the feedback to each of the connected variable nodes. This process will repeat until a general consensus is reached for all nodes. A short cycle in a Tanner graph will generate a dependency between nodes, which will cause computations to become inaccurate after each above-mentioned loop. Visually, a short cycle is tracing connections from node to node and getting a “loop” or cycle that will have a low number of vertices. For example, a cycle that goes N0 -> N1 -> N2 -> N3 -> N0, would be a short cycle. 
 
