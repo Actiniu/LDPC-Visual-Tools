@@ -93,9 +93,9 @@ An honorable mention are the “Matrix Wizard” tools: “Matrix Compressor” 
 
 
 num_rows/num_cols/comp_values
-	num_rows is an integer, the number of rows in the matrix.
-	num_cols is an integer, the number of columns in the matrix.
-	comp_values is a compressed string representing the values within the matrix. It can be composed from combinations of the following components.
+num_rows is an integer, the number of rows in the matrix.
+num_cols is an integer, the number of columns in the matrix.
+comp_values is a compressed string representing the values within the matrix. It can be composed from combinations of the following components.
 
 
 Any subsequence of 1’s and 0’s that has less than three consecutive repeating digits may simply be written as a binary string (cannot contain 000 or 111). Whenever three consecutive repeating digits are encountered, compression should be used; a subsequence consisting of all 1’s (111…1) will be written as “/subseq_length/” and a subsequence of all 0’s (000…0) will be written as “.sebseq_length.”; all of this is written on a single line with no whitespace. 
@@ -121,20 +121,20 @@ From left to right:
 Etc
 
 	
-	This symmetrical “encryption” allows for an easy compression and decompression for larger matrices without significant loss of efficiency. 
+This symmetrical “encryption” allows for an easy compression and decompression for larger matrices without significant loss of efficiency. 
 
 
 # Algorithms - Tanner Greedy
 	
-	Generating a Tanner Graph with the lowest possible short cycle with restricted parameters is quite difficult due to the algorithmic complexity. As mentioned before, however, PEG finds a sub-optimum solution that can yield a “good” result with a low algorithmic complexity. 
+Generating a Tanner Graph with the lowest possible short cycle with restricted parameters is quite difficult due to the algorithmic complexity. As mentioned before, however, PEG finds a sub-optimum solution that can yield a “good” result with a low algorithmic complexity. 
 The algorithm implemented here, based on the one presented in the paper, takes a set of variable and check nodes and their respective degrees (represented as two lists of integers). It then starts with the first variable node and moves forward through both lists (alternating node types) and updating the connection lists. If the last-added node still has an open connection, then a new other-type-node will connect, or if all have been used, the next valid other-type-node will be chosen (valid here means looking for connection but not already connected to the current node).
 When a list reaches the end, it begins again from the head of the list, forming a graph with cycles instead of a tree. It repeats this process until both degree-lists contain only 0’s (all connections have been made) and then a validification test is run to make sure that there are no overlaps in the H matrix (and notify if they are). (add an example here?)
-	The other algorithms are listed separately for readability. The Tanner Greedy is the most optimal out of these, however, other algorithms may produce interesting results with certain data sets.
+The other algorithms are listed separately for readability. The Tanner Greedy is the most optimal out of these, however, other algorithms may produce interesting results with certain data sets.
 
 
 # Implementation
 	
-	The code is structured in a basic “Welcome Page” section where all the tools are linked as well as a PDF with the user guide (add link here). Each tool has its own subfolder and does not share any memory space with other tools. All the uploads and downloads are done using .txt files only. All of the tools contain an HTML page with the CSS pages for a minimal styling and the links for all the JavaScript pages relevant to said tool. A list is attached (add link here) with a synopsis of each file.
+The code is structured in a basic “Welcome Page” section where all the tools are linked as well as a PDF with the user guide (add link here). Each tool has its own subfolder and does not share any memory space with other tools. All the uploads and downloads are done using .txt files only. All of the tools contain an HTML page with the CSS pages for a minimal styling and the links for all the JavaScript pages relevant to said tool. A list is attached (add link here) with a synopsis of each file.
 
 
 # Sources
