@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'">
+        <link rel="stylesheet" href="../styles/display.css">
+        <link rel="stylesheet" href="../styles/graph.css">
+    </head>
+    <title>Matrix Compressor Tool</title>
+    <body>
+        <div id="panel-container" class="row">
+            <div class="column">
+                <div>
+                    Upload the matrix file:
+                    <input class="hidden" type="file" id="input-matrix" accept=".txt">
+                    <button class="upload-button" id="file-selector" onclick="openUploadMatrix()">Upload</button>
+                </div>
+                <div>
+                    To get the matrix:
+                    <button class="upload-button" id="matrix-view" onclick="flow()">Run</button>
+                </div>
+                <div>
+                    To export the compressed matrix:
+                    <button class="upload-button" id="export-matrix" onclick="exportMatrixFile()">Export</button>
+                </div>
+                <div>
+                    Choose the name of your export file:
+                    <input type="text" id="export-name" value="Compressed_Matrix_">
+                </div>
+            </div>
+            <div id="matrix-container" class="column">
+                <p id="Matrix-display"></p>
+            </div>
+            <div id="compress-container" class="column">
+                <p id="Compress-display"></p>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="./logic/display_matrix.js"></script>
+<script src="./logic/export.js"></script>
+<script src="./logic/get_matrix.js"></script>
+<script src="./logic/window_fuctions.js"></script>
+<script src="./logic/main.js"></script>

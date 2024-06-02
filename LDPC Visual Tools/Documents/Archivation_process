@@ -1,0 +1,11 @@
+This is how a matrix is archived, and the generated file will look (a single line string):
+1. Take the matrix sizes and write row_number/column_number/
+2. Add the values: row_0row_1...row_n 
+3. If a value is repeated without interruption for more than 3 times do this:
+    - if value is 0, instead of writing N 0's, write .N.
+    - if value is 1, instead of writing M 1's, write /M/
+4. Repeat until the end of file. 
+Example:
+1 0 1 0 1 0 1           
+0 1 0 1 0 1 1   --->  3\6\10101010101011111.4.
+1 1 1 0 0 0 0             

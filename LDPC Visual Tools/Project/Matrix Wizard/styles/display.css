@@ -1,0 +1,33 @@
+.column {
+    float: left;
+    padding: 10px;
+    min-width: fit-content;
+    height: 250px;
+    overflow: auto;
+    border: 2px solid black;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.one {
+    font-weight: bold;
+    color: red;
+}
+
+.zero {
+    font-weight: normal;
+    color: blue;
+}
+
+.fill-zero {
+    font-weight: lighter;
+    color: gray;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,38 @@
+<script>
+    function randomize(x) {
+        return Math.floor(Math.random() * x);
+    }
+
+    let line = "";
+    function genMatrix() {
+        let n = randomize(10) + 5;
+        let m = randomize(10) + 5;
+        line = n + ' ' + m + '\n';
+
+        for (var i = 0; i < n; i++) {
+            for (var j = 0; j < m; j++) {
+                let randomValue = randomize(2);
+                line += randomValue + ' ';
+            }
+            if (i != n - 1) {
+                line += '\n';
+            }
+        }
+    }
+
+    let p = -1;
+
+    function download(text, type) {
+        genMatrix();
+        var a = document.getElementById("a");
+        var file = new Blob([text], { type: type });
+        a.href = URL.createObjectURL(file);
+        a.download = 'm_' + p + '.txt';
+        p++;
+    }
+</script>
+
+<html>
+    <label><a href="" id="a">click here to download your file</a></label>
+    <button onclick="download(line, 'text/plain')">Create file</button>
+</html>

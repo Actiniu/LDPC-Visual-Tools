@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'">         
+        <link rel="stylesheet" href="./styles/display.css">
+        <link rel="stylesheet" href="./styles/graph.css">
+    </head>
+    <title>PEG Matrix Generation Tool</title>
+    <body>
+        <div id="panel-container" class="row">
+            <div class="column">
+                <div>
+                    Upload the node and factors file:
+                    <input class="hidden" type="file" id="input-file" accept=".txt">
+                    <button class="upload-button" id="file-selector" onclick="openUploadFile()">Upload</button>
+                </div>
+                <div>
+                    Select the algorithm you wish to use for generation
+                    <select id="algorithm-select">
+                        <option value="tanner-greedy">Tanner Greedy</option>
+                        <option value="tanner-greedy-sorted-dsc">Tanner Sorted Asc</option>
+                        <option value="tanner-greedy-sorted-asc">Tanner Sorted Dsc</option>
+
+                        <option value="greedy">Greedy</option>
+                        <option value="greedy-sort-asc">Greedy Sort Asc</option>
+                        <option value="greedy-sort-dsc">Greedy Sort Dsc</option>
+                        <option value="greedy-f-asc-n-dsc">Greedy Factors Asc Nodes Dsc</option>
+                        <option value="greedy-f-dsc-n-asc">Greedy Factors Dsc Nodes Asc</option>
+                        <option value="asc-sort-on-step">Sort Asc on Step</option>
+                        <option value="dsc-sort-on-step">Sort Dsc on Step</option>
+                        <option value="flip-sort-on-step-asc">Flip Sort on step Asc</option>
+                        <option value="flip-sort-on-step-dsc">Flip Sort on step Dsc</option>
+                        <option value="half-sort-on-step">Half Sort on step</option>
+                        <option value="random">Random</option>
+                    </select>
+                </div>
+                <div>
+                    When ready click here:
+                    <button class="upload-button" id="matrix-selector" onclick="flow()">Run</button>
+                </div>
+                <div id="graph-view-section">
+                    To view the graph of the matrix:
+                    <button class="upload-button" id="graph-view" onclick="viewGraph()">View Graph</button>
+                </div>
+                <div>
+                    If you wish to export the matrix generated:
+                    <button class="update-button" id="export-matrix" onclick="exportMatrixFile()">Export</button>
+                </div>
+                <div>
+                    Choose the name of your export file:
+                    <input type="text" id="export-name" value="PEG_Matrix_">
+                </div>
+            </div>
+            <div id="matrix-container" class="column">
+                <p id="Matrix-display"></p>
+            </div>
+        </div>
+        <div id="shapes-container" class="outer-container">
+            <div id="circles-container" class="container"></div>
+            <div id="lines-container"></div>
+            <div id="squares-container" class="container"></div>
+        </div>
+    </body>
+</html>
+<script src="./logic/algorithms_non_tanner.js"></script>
+<script src="./logic/algorithms_tanner.js"></script>
+<script src="./logic/bond.js"></script>
+<script src="./logic/clean.js"></script>
+<script src="./logic/display_matrix.js"></script>
+<script src="./logic/draw_line.js"></script>
+<script src="./logic/draw_shapes.js"></script>
+<script src="./logic/export.js"></script>
+<script src="./logic/get_file_data.js"></script>
+<script src="./logic/window_fuctions.js"></script>
+<script src="./logic/main.js"></script>
+
+

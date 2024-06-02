@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'">            
+        <link rel="stylesheet" href="styles/graph.css">
+        <link rel="stylesheet" href="styles/display.css">
+        <title>Nodes and Factors Graph</title>
+    </head>
+    <body>
+        <div id="panel-container" class="row">
+            <div class="column">
+                <div id="base-panel">
+                    <div>
+                        Upload the H matrix file:
+                        <input type="file" id="input-H-matrix" style="display: none;" accept=".txt">
+                        <button class="upload-button" id="H-matrix-selector" onclick="openUploadHMatrix()">Upload</button>
+                    </div>
+                    
+                    <div>
+                        Set number of repetitions:
+                        <input type="number" id="repeat-pattern" accept="number" value="1">
+                    </div>
+                    <div>
+                        When ready, click here:
+                        <button class="update-button" id="update" onclick="initialFlow()">Run</button>
+                    </div>
+                </div>
+                <br>
+                <div id="shift-panel" style="display: none;">
+                    <div>
+                        Shift bond at variable node = 
+                        <input type="number" id="x-shift" accept="number" value=""> 
+                        , check node = 
+                        <input type="number" id="y-shift" accept="number" value="">
+                        by 
+                        <input type="number" id="steps-shift" accept="number" value="0">
+                        steps to the right
+                    </div>
+                    <div>When ready to shift, click here:
+                        <button class="execute-button" onclick="initiateShift()">Apply shift</button>
+                    </div>
+                </div>
+                <div>
+                    <button class="update-button" id="advanced-show" onclick="showAdvanced(1)">Show Advanced Settings</button>
+                    <button class="update-button" id="advanced-hide" onclick="showAdvanced(0)" style="display: none;">Hide Advanced Settings</button>
+                </div>
+                <div id="advanced-panel" style="display: none;">
+                    <br>
+                    <div>
+                        Focus on central module
+                        <input type="checkbox" id="focus-module">
+                    </div>
+                    <div>
+                        Hide noise to remove the bonds, aside from focus module
+                        <input type="checkbox" id="hide-noise">
+                    </div>
+                    <div>
+                        Hide Extended Matrix
+                        <input type="checkbox" id="hide-e-matrix">
+                    </div>
+                    <div>
+                        Hide Shifted Matrix
+                        <input type="checkbox" id="hide-s-matrix">
+                    </div>
+                    <div>
+                        Please select which matrix you would like to export
+                        <select id="matrix-list">
+                            <option value="" disabled selected>Select an item</option>
+                        </select>
+                        <button class="update-button" id="export-matrix" onclick="exportMatrixFile()">Export</button>
+                        <div>
+                            Choose the name of your export file
+                            <input type="text" id="export-name" value="Matrix_">
+                        </div>
+                        <div>
+                            Use encoding
+                            <input type="checkbox" id="archive-export" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="matrix-container" class="column">
+              <p id="H-Matrix-display"></p>
+            </div>
+            <div id="matrix-container" class="column">
+                <p id="E-Matrix-display"></p>
+            </div>
+            <div id="matrix-container" class="column">
+                <p id="S-Matrix-display-one"></p>
+            </div>
+            <div id="matrix-container" class="column">
+                <p id="S-Matrix-display-two"></p>
+            </div>
+        </div>
+        <div id="shapes-container" class="outer-container">
+            <div id="circles-container" class="container"></div>
+            <div id="lines-container"></div>
+            <div id="squares-container" class="container"></div>
+            <div id="outline-container"></div>
+        </div>
+    </body>
+</html>
+<script src="./logic/main.js"></script>
+<script src="./logic/bond.js"></script>
+<script src="./logic/clean.js"></script>
+<script src="./logic/display_matrix.js"></script>
+<script src="./logic/draw_line.js"></script>
+<script src="./logic/draw_graph.js"></script>
+<script src="./logic/draw_outline.js"></script>
+<script src="./logic/draw_shapes.js"></script>
+<script src="./logic/export.js"></script>
+<script src="./logic/filters_change.js"></script>
+<script src="./logic/get_matrix.js"></script>
+<script src="./logic/shift_check.js"></script>
+<script src="./logic/window_fuctions.js"></script>

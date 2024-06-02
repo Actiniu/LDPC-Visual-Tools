@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    align-items: center;
+    padding: 100px;
+    justify-content: space-between;
+}
+
+.circle_a {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: blue;
+    margin-right: 20px;
+}
+
+.circle_b {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: green;
+    margin-right: 20px;
+}
+
+.square_a {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border: 1px solid black;
+    margin-right: 20px;
+}
+
+.square_b {
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    border: 1px solid black;
+    margin-right: 20px;
+}
+
+.line {
+    position: absolute;
+    border: 1px solid black;
+}
+
+.border-line {
+    position: absolute;
+    border: 1px solid gray;
+}
+
+.border-focus {
+    position: absolute;
+    border: 1px solid magenta;
+}
+
+.highlight-magenta {
+    background-color: magenta;
+}
+
+.highlight-cyan {
+    background-color: cyan;
+}
