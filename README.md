@@ -14,9 +14,6 @@ LDPC codes are often represented with a large sparse binary matrix called the �
 For the visualization of the above mentioned matrix, a Tanner graph can be used. In order to construct such a graph the following conventions can be used:
 Take the number of variable nodes and check nodes and list them as two horizontal containers (in this case, the variable nodes will be represented by circles and the check nodes by squares). By convention, the variable nodes will be at the top. The X check node and Y variable node can be connected by a line, if and only if in their respective edge H[X][Y] is equal to 1.
 The H matrix (root matrix) can be “diagonally repeated” in order to generate the Extended Matrix (EM). This is done by placing copies of H along the main diagonal and filling the rest of the space with zeros. A module is the section containing the H matrix. The size of the EM will be module_count * H_rows and module_count * H_cols.
-Here is an example (where repetitions is R = 4):
-
-
 
 
 The Tanner Graph is generated with a process similar to depth-first tree construction, however since cycles will inevitably happen, will route back to the earliest used nodes as an attempt to maximize cycle lengths. More about the exact algorithm can be found in the paper mentioned in the introduction, which is the base for all the work done here.
@@ -32,58 +29,8 @@ EM = Extended Matrix, a larger matrix formed by copying the HM diagonally and fi
 SM_x = “Shifted Matrix step x”; an EM will have multiple steps of row-shifts applied to it, rerouting the check node graph to eventually make the final product. SM_0 is identical to the EM, SM_1 shows the first change, SM_2 shows the next change, and so on.
 Module = As you will read later, each change in the check node graph is “mirrored”, or modular, by design. The term Module refers to the smaller part of the graph that directly concerns the variable nodes and check nodes from the original HM. (As a reminder, the EM is initialized from multiple copies of an HM; these are the modules, and any change made to a module will be done for all modules in parallel).
 
-
-
-	
-
-One example of the process and abbreviations:
-
-An H matrix (HM):
-1
-0
-1
-0
-1
-0
-0
-1
-0
-1
-0
-1
-0
-0
-0
-1
-1
-1
-
-
-
-
-
-
-
-An Extended Matrix (EM), using 4 repetitions of the H matrix (HM) (R=4):
-
-Note: At this step we can see the Modules clearly.
-The modular nature is parallel at first; they do not interact with each other.
-Applying shifts will make these modules more integrated.
-
-Now: Taking the above Extended Matrix (EM)
-First: Find the edge connecting variable node 1 to check node 1 and apply a shift of 2.
-Next: Find the edge connecting variable 3 to check node 1 and apply a shift of 1.
-
-This would be represented as SM_1: (row 1, col 1, S=2)
-
-
-Followed by SM_2: (row 1, col 3, S=1)
-
-
 Note: SM_0 is identical to the Extended Matrix (EM).
 Note: The selected row and column cannot be a zero. Since these matrices represent edges in a graph, shifts can only be applied to variable nodes and check nodes that are connected.
-
-
 
 Shifting enables the creation of a shifted matrix by interconnecting identical parallel modules, and if done in an appropriate manner, spawns a large girth cycle. The resulting matrix can handle larger data sets for LDPC without discarding the functional root. The “Nodes and Factors Graph” tool (add link here) allows the user to apply such sights and analyze the resulting matrix using a visual graph as well as the text. Other notable features include: highlighting modules or nodes, exporting the matrix, matrix compression, and adjusting the module count.
 	
@@ -91,25 +38,17 @@ Going back to the PEG, the second main tool “PEG Matrix Generator” allows th
 
 An honorable mention are the “Matrix Wizard” tools: “Matrix Compressor” and “Matrix Decompressor” which are complementary to the above mentioned ones. To further explain this topic: resulting extended or shifted matrices can become quite large to store in a text file in a natural way. In order to suppress (compress) such an issue, a basic compressing rule has been created as follows, generating a single line string with no empty spaces. The compressed string follows the format: 
 
-
 num_rows/num_cols/comp_values
 num_rows is an integer, the number of rows in the matrix.
 num_cols is an integer, the number of columns in the matrix.
 comp_values is a compressed string representing the values within the matrix. It can be composed from combinations of the following components.
 
-
 Any subsequence of 1’s and 0’s that has less than three consecutive repeating digits may simply be written as a binary string (cannot contain 000 or 111). Whenever three consecutive repeating digits are encountered, compression should be used; a subsequence consisting of all 1’s (111…1) will be written as “/subseq_length/” and a subsequence of all 0’s (000…0) will be written as “.sebseq_length.”; all of this is written on a single line with no whitespace. 
-
-
-
-
-
 
 An example of compressing the extended matrix: 
 
 12/24/10101.20.10101.21./3/.24.10101.20.10101.21./3/.24.10101.20.10101.21./3/.24.10101.20.10101.21./3/
 	
-
 From left to right:
 12 		represents the row count
 24 		represents the column count
@@ -119,10 +58,8 @@ From left to right:
 .21. 		represents twenty-one ‘zeroes’
 /3/ 		represents three ‘ones’
 Etc
-
 	
 This symmetrical “encryption” allows for an easy compression and decompression for larger matrices without significant loss of efficiency. 
-
 
 # Algorithms - Tanner Greedy
 	
@@ -141,8 +78,3 @@ The code is structured in a basic “Welcome Page” section where all the tools
 PEG paper
 https://ieeexplore.ieee.org/document/1377521
 
-# Resources:
-~GitHub link~
-~algorithms archive link~
-~user_guide link~
-~link for examples - might not be added in the final version~
